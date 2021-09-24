@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Hash;
 
@@ -14,7 +15,6 @@ class RegisterController extends Controller
 
     public function store(Request $request) {
 
-//        dd($request->all());
 
         $this->validate($request,[
            'name' => 'required|max:255',
@@ -29,6 +29,16 @@ class RegisterController extends Controller
             'tele' => $request->tele,
             'password' => Hash::make($request->password),
         ]);
+
+//        dd(Auth::attempt(
+//            ['email' => $request->email , 'password' => $request->password]));
+
+        if (Auth::attempt(
+            ['email' => $request->email , 'password' => $request->password])) {
+
+            return redirect()->route("Dashboard");
+        }
+
 
 
     }
