@@ -2,10 +2,16 @@
 
 
 @section("content")
+    <div>
+        <div class=" border-b-2 mb-2 border-white text-center">
+            <h1 class="font-bold text-5xl text-white uppercase">
+                Join Us Today
+            </h1>
+        </div>
+    </div>
 
     <div class="flex justify-center">
-
-        <div class="w-4/12 bg-gray-200 rounded-lg shadow-2xl">
+        <div class="w-4/12 bg-gray-200 rounded-lg p-4 shadow-2xl">
 
             <form method="post" action="{{url('/register/store')}}">
                 @csrf

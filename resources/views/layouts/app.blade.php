@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("page_title")</title>
 </head>
-<body>
+<body class="bg-blue-600">
 
 <nav class="p-4 text-black border bg-white w-screen flex justify-between mb-6 items-center">
     <ul class="flex items-center">

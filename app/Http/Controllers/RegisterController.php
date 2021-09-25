@@ -9,19 +9,19 @@ use Hash;
 
 class RegisterController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view("auth.register");
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
-
-
-        $this->validate($request,[
-           'name' => 'required|max:255',
-           'email' => 'required|email',
-           'tele' => 'required',
-           'password' => 'required|confirmed|min:6',
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'tele' => 'required',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         User::create([
@@ -35,12 +35,12 @@ class RegisterController extends Controller
 //            ['email' => $request->email , 'password' => $request->password]));
 
         if (Auth::attempt(
-            ['email' => $request->email , 'password' => $request->password])) {
+            ['email' => $request->email, 'password' => $request->password])) {
 
-            return redirect()->route("Dashboard");
+            if (Auth::user()->is_admin) {
+                return redirect()->route('Admin');
+            }
         }
-
-
-
+        return redirect()->route("Dashboard");
     }
 }
