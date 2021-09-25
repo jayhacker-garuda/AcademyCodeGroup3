@@ -24,27 +24,31 @@ Route::get('/', function () {
 });
 
 
-
-Route::get("/login",[LoginController::class,"index"])->name("Login");
-Route::post("/log",[LoginController::class,"login"])->name("On-Login");
-
-
-Route::get("/register",[RegisterController::class,"index"])->name("Register");
-Route::post("/register/store",[RegisterController::class,"store"]);
+Route::get("/login", [LoginController::class, "index"])->name("Login");
+Route::post("/log", [LoginController::class, "login"])->name("On-Login");
 
 
-Route::post("/logout",[LogoutController::class,"logout"])->name("Logout");
+Route::get("/register", [RegisterController::class, "index"])->name("Register");
+Route::post("/register/store", [RegisterController::class, "store"]);
 
-Route::get("/dashboard",[DashboardController::class,"index"])->name("Dashboard");
 
-Route::get("/user/profile",[ProfileController::class,"index"])->name("Profile");
-Route::post("/user/profile/store",[ProfileController::class,"updateProfile"])->name("On-Update");
+Route::post("/logout", [LogoutController::class, "logout"])->name("Logout");
 
+Route::get("/dashboard", [DashboardController::class, "index"])->name("Dashboard");
+
+Route::get("/user/profile", [ProfileController::class, "index"])->name("Profile");
+Route::post("/user/profile/store", [ProfileController::class, "updateProfile"])->name("On-Update");
 
 
 // Admin
 
-Route::get("/admin/index",[AdminController::class,"index"])->name("Admin");
+Route::get("/admin/index", [AdminController::class, "index"])->name("Admin");
+Route::get("/admin/student/index", [AdminController::class, "studentView"])->name("Admin.student");
+Route::get("/admin/courses/index", [AdminController::class, "coursesView"])->name("Admin.courses");
+Route::get("/admin/category/index", [AdminController::class, "categoryView"])->name("Admin.category");
+Route::get("/admin/courses/create", [AdminController::class, "createCourse"])->name("Admin.create.courses");
+Route::get("/admin/category/create", [AdminController::class, "createCategory"])->name("Admin.create.category");
+
 
 
 
