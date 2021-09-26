@@ -33,7 +33,12 @@ Route::get("/register",[RegisterController::class,"index"])->name("Register");
 Route::post("/register/store",[RegisterController::class,"store"]);
 
 
+<<<<<<< Updated upstream
 Route::post("/logout",[LogoutController::class,"logout"])->name("Logout");
+=======
+Route::get("/dashboard", [DashboardController::class, "index"])->name("Dashboard");
+Route::get("/dashboard/courses", [DashboardController::class, 'viewCourses'])->name("Dashboard.courses");
+>>>>>>> Stashed changes
 
 Route::get("/dashboard",[DashboardController::class,"index"])->name("Dashboard");
 
@@ -42,9 +47,20 @@ Route::post("/user/profile/store",[ProfileController::class,"updateProfile"])->n
 
 
 
+<<<<<<< Updated upstream
 // Admin
 
 Route::get("/admin/index",[AdminController::class,"index"])->name("Admin");
 
 
 
+=======
+Route::get("/admin/index", [AdminController::class, "index"])->name("Admin");
+Route::get("/admin/student/index", [AdminController::class, "studentView"])->name("Admin.student");
+Route::get("/admin/courses/index", [AdminController::class, "coursesView"])->name("Admin.courses");
+Route::get("/admin/category/index", [AdminController::class, "categoryView"])->name("Admin.category");
+Route::get("/admin/courses/create", [AdminController::class, "createCourse"])->name("Admin.create.courses");
+Route::post("/admin/courses/store", [AdminController::class, 'storeCourse'])->name("Admin.store.courses");
+Route::get("/admin/category/create", [AdminController::class, "createCategory"])->name("Admin.create.category");
+Route::post("/admin/category/store", [AdminController::class, "storeCategory"])->name("Admin.store.category");
+>>>>>>> Stashed changes
